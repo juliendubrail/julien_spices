@@ -1,5 +1,5 @@
 function addText(){
-    var elem = 'AWESOME';
+    var elem = document.createTextNode('AWESOME');
     elem.style.position ='fixed';
     elem.style.marginLeft= '20px';
     elem.style.marginTop= '100px';
