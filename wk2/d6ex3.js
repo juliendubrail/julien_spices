@@ -5,5 +5,5 @@ function addText(){
     elem.style.marginTop= '100px';
     elem.style.fontSize= '200px';
     elem.style.zIndex= '2147483647';
-    document.createElement = 'elem';
+    document.body.appendchild(elem);
 }
