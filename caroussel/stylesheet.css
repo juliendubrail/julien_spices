@@ -1,0 +1,53 @@
+
+.caroussel {
+    height: 600px;
+    width: auto;
+}
+
+
+
+ul{
+    width:100%;
+    position:absolute;
+    list-style: none;
+    top: 550px;
+    left:350px;
+}
+
+ul li{
+border:2px solid white;
+width: 12px;
+height: 12px;
+background:transparent;
+border-radius: 50%;
+display: inline-block;
+cursor: pointer;
+}
+
+#kit1{
+position: absolute;
+background-image: url(img/kit1.jpg);
+background-size: cover;
+height:100%;
+}
+
+#kit2{
+    position: absolute;
+    background-image: url(img/kit2.jpg);
+    background-size: cover;
+    height:100%;
+}
+
+#kit3{
+    position:absolute;
+    background-image: url(img/kit3.jpg);
+    background-size: cover;
+    height:100%;
+}
+
+#kit4{
+    position:absolute;
+    background-image: url(img/kit4.jpg);
+    height:100%;
+    background-size: cover;
+}

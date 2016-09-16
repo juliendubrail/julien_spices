@@ -1,0 +1,27 @@
+body {
+   margin: 0;
+}
+
+.list {
+   position: relative;
+   margin-bottom: 10px;
+   font-family: monospace;
+   font-weight: bold;
+   font-size: 15px;
+   right: 0;
+   display: inline-block;
+   margin-right: 100px;
+   margin-left: 100px;
+}
+
+#container {
+    position: relative;
+   border-bottom: 2px solid black;
+   width: 300%;
+}
+
+
+#main {
+   width: 100%;
+   overflow: hidden;
+}
