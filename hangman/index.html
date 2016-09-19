@@ -7,18 +7,66 @@
 </head>
 
 <body>
-    <div id='start'>START</div>
-    <div><input id='result' type='text'></div>
-    <div><input id='rando' type='text'></div>
 
+    <div id="header"><p lingdex="0"><p>Press a key to guess the word </p> - Turn the volume up and play</p>
+    </div>
+    <div class="buttons" id='start' style="top: 140px; left: 130px;">start game</div>
+    <div class="buttons" id='again' style="top: 240px; left: 130px;">play again</div>
+    <div class="buttons" id='resolve' style="top: 340px; left: 130px;">resolve</div>
 
-    <div class='input-area'><input id='input' type='text' maxlength='1'/>ENTER A LETTER</div>
+    <div id="container">
+        <canvas id="my_canvas" style="right: 130px;"width="400" height="400"></canvas>
+        <div class="letters" style="top: 100px; left: 650px;" id="a">a</div>
+        <div class="letters" style="top: 100px; left: 710px;" id="b">b</div>
+        <div class="letters" style="top: 100px; left: 770px;" id="c">c</div>
+        <div class="letters" style="top: 100px; left: 830px;"id="d">d</div>
+        <div class="letters" style="top: 100px; left: 890px;"id="e">e</div>
+        <div class="letters" style="top: 100px; left: 950px;"id="f">f</div>
+        <div class="letters" style="top: 170px; left: 650px;"id="g">g</div>
+        <div class="letters" style="top: 170px; left: 710px;"id="h">h</div>
+        <div class="letters" style="top: 170px; left: 770px;"id="i">i</div>
+        <div class="letters" style="top: 170px; left: 830px;"id="j">j</div>
+        <div class="letters" style="top: 170px; left: 890px;"id="k">k</div>
+        <div class="letters" style="top: 170px; left: 950px;"id="l">l</div>
+        <div class="letters" style="top: 240px; left: 650px;"id="m">m</div>
+        <div class="letters" style="top: 240px; left: 710px;"id="n">n</div>
+        <div class="letters" style="top: 240px; left: 770px;"id="o">o</div>
+        <div class="letters" style="top: 240px; left: 830px;"id="p">p</div>
+        <div class="letters" style="top: 240px; left: 890px;"id="q">q</div>
+        <div class="letters" style="top: 240px; left: 950px;"id="r">r</div>
+        <div class="letters" style="top: 310px; left: 650px;"id="s">s</div>
+        <div class="letters" style="top: 310px; left: 710px;"id="t">t</div>
+        <div class="letters" style="top: 310px; left: 770px;"id="u">u</div>
+        <div class="letters" style="top: 310px; left: 830px;"id="v">v</div>
+        <div class="letters" style="top: 310px; left: 890px;"id="w">w</div>
+        <div class="letters" style="top: 310px; left: 950px;"id="x">x</div>
+        <div class="letters" style="top: 380px; left: 650px;"id="y">y</div>
+        <div class="letters" style="top: 380px; left: 710px;"id="z">z</div>
+        <div class="numbers" style="top: 380px; left: 770px;"id="1">1</div>
+        <div class="numbers" style="top: 380px; left: 830px;"id="2">2</div>
+        <div class="numbers" style="top: 380px; left: 890px;"id="3">3</div>
+        <div class="numbers" style="top: 380px; left: 950px;"id="4">4</div>
+        <div class="numbers" style="top: 450px; left: 650px;"id="5">5</div>
+        <div class="numbers" style="top: 450px; left: 710px;"id="6">6</div>
+        <div class="numbers" style="top: 450px; left: 770px;"id="7">7</div>
+        <div class="numbers" style="top: 450px; left: 830px;"id="8">8</div>
+        <div class="numbers" style="top: 450px; left: 890px;"id="9">9</div>
+        <div class="numbers" style="top: 450px; left: 950px;"id="0">0</div>
+        <div class='numbers' style="top: 520px; left: 830px;"><input id='input' type='text' maxlength='1'/></div>
+        <div class="buttons2"  style="top: 520px; left: 650px;">symbols</div>
 
-    <div class = "container">
-        <canvas id="anim_canvas" width="1000" height="1000">
-            <canvas id="my_canvas" width="400" height="400"></canvas>
-        </canvas>
-</div>
+        <div id="inputs">
+            <div><input id='result' type='text' style="right: 300px;"></div>
+            <p>or enter full word:<input id='fullword' type='text' placehoder="enter"></p>
+            <!-- <div><input id='rando' type='text'></div> -->
+        </div>
+
+    </div>
+
+    <audio loop="loop" autoplay="autoplay">
+        <source src="music.mp3" />
+    </audio>
+
 </body>
 
 <script src="hangman.js"></script>
