@@ -556,13 +556,14 @@ function getRandomWord(){
                         k.className = "lettersSelected" ;
                     }
                     outputField.value = reveal.join(' ');
-                    if (word.indexOf(letter) == -1)
-                    {
-                        console.log("guess is not in solution");
-                        lives --;
-                        k.className = "wrongLetter" ;
 
-                    }
+                }
+                if (word.indexOf(letter) == -1)
+                {
+                    console.log("guess is not in solution");
+                    lives --;
+                    k.className = "wrongLetter" ;
+
                 }
                 if (lives == 5){
                     context.drawImage(img1, 0, 0);}
