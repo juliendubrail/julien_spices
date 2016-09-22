@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Great Authors</title>
+    <link type="text/css" rel="stylesheet" href="handlebars.css"/>
+</head>
+<body>
+
+<script id="results" type="text/handlebars">
+    {{#authors}}
+    <div class=container>
+        <div><h3><em>{{name}}</em> ({{born}}-{{died}})</h3></div>
+        <div class=item_details> ({{selectedWritings}})</div>
+        <img src={{photo}}></img>
+        <p>{{quote}}</p>
+    </div>
+    {{/authors}}
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="handlebars.js"></script>
+</body>
+</html>
