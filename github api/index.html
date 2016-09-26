@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="github.css"/>
+</head>
+<h1>Github Search</h1>
+
+
+
+<body>
+
+    <div id = "container">
+        <input type="text" name="text" id="text" placeholder="enter user name">
+        <button id="go">Go</button>
+    </div>
+
+    <div id="whatever"></div>
+
+    <script id="results" type="text/handlebars">
+
+    {{#data}}
+    <div>
+    <img src="{{owner.avatar_url}}"/>
+    </div>
+
+    <p class=links>{{owner.login}}/{{name}}</p>
+
+    {{/data}}
+
+    </script>
+
+     <!-- <p class="links"><a href="https://api.github.com/repos/{{owner.login}}/{{name}}/commits" style="text-decoration: none">{{owner.login}}/{{name}}</a></p>
+    <a href="https://api.github.com/repos/{{owner.login}}/{{name}}/commits" style="text-decoration: none"> -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="github.js"></script>
+
+</body>
+</html>
