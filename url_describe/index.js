@@ -22,4 +22,3 @@ console.log("The pathname is " + urlpath.pathname);
 console.log("The query is " + urlpath.query);
 console.log("The value of the a parameter is " + query.a);
 console.log("The value of the b parameter is " + query.b);
-// console.log("The value of the a parameter is " + query[0]);
