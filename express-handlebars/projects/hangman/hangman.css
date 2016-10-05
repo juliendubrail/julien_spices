@@ -1,0 +1,255 @@
+@font-face { font-family: star1; src: url('Stjldbl1.ttf'); }
+@font-face { font-family: starlogo; src: url('StarWars.ttf'); }
+
+body {
+    background: black url("img/stars-bg.jpg");
+    font:300%/40px 'Permanent Marker', star1, Serif;
+    color:yellow;
+}
+
+canvas{
+    background: black url("img/stars-bg.jpg");
+}
+
+#header {
+    background:#222;
+    width:100%;
+    top:0;
+    left:0;
+    position:absolute;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color:#FFF;
+    text-align:center;
+}
+
+#start{
+        /*color:#7FA917;*/
+}
+#header p {
+    padding:5px 10px;
+    margin:0;
+    color: yellow;
+    font-weight:400;
+    text-decoration:none;
+}
+
+
+#container {
+    background: no-repeat bottom center;
+    width:800px;
+    height:550px;
+    margin:40px auto 0 auto;
+    position:relative;
+    padding:50px 0 0 0;
+}
+
+#my-canvas{
+    position: absolute;
+    margin-left: 100px;
+}
+
+#buttons {
+    background:#50514F;
+    width:100%;
+    top:100px;
+    left:0;
+    position:absolute;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color:#FFF;
+    text-align:center;
+}
+
+#inputs {
+    width:75%;
+    height:50px;
+    left:0;
+    position:absolute;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color:#FFF;
+    text-align:center;
+}
+
+#letters {
+    width:100%;
+    height:100px;
+    top:600px;
+    left:0;
+    position:absolute;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color:#FFF;
+    text-align:center;
+}
+
+h3  {font-family: star1;}
+h1 {font-family: starlogo;}
+
+.livesStatus p  {font-family: star1; }
+.lastGuess p {font-family: star1; }
+.lastGuess div {font-family: star1; }
+.showGuessed p  {font-family: star1; }
+.guessedLetters p  {font-family: star1; }
+
+#input{
+    width:40px;
+    height: 40px;
+    border-radius:4px;
+}
+
+#result {
+font-size: 30px;
+height: 50px;
+width: 595px;
+text-align: center;
+position: relative;
+margin-left: 300px;
+border-style: dashed;
+border-width:medium;
+border-radius:4px;
+}
+
+
+#fullword {
+font-size: 30px;
+height: 50px;
+text-align: center;
+position: relative;
+border-style: dashed;
+
+border-radius:4px;
+}
+
+#start:hover {
+  cursor: pointer;
+}
+
+#again:hover {
+  cursor: pointer;
+}
+
+#resolve:hover {
+  cursor: pointer;
+}
+
+#a:hover{
+    cursor: pointer;
+}
+
+.container {
+    width:800px;
+    height:550px;
+    margin:40px auto 0 auto;
+    position:relative;
+    padding:50px 0 0 0;
+}
+
+
+.letters  {
+    border-radius:4px;
+    list-style:none;
+    padding:0;
+    margin:2px;
+    width:50px;
+    height:50px;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color: white;
+    text-align:center;
+    background:#OOO;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop( 0, #FFF ), color-stop( 1, #AAA ) );
+    background:-o-linear-gradient(top, #FFF, #AAA);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#FFFFFF');
+    border:1px solid #FFF;
+    position:absolute;
+}
+
+.lettersSelected {
+    border-radius:4px;
+    list-style:none;
+    padding:0;
+    margin:2px;
+    width:50px;
+    height:50px;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color:#7FA917;
+    text-align:center;
+    background:#OOO;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop( 0, #FFF ), color-stop( 1, #AAA ) );
+    background:-o-linear-gradient(top, #FFF, #AAA);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#FFFFFF');
+    border:1px solid #FFF;
+    position:absolute;
+}
+
+.wrongLetter {
+    border-radius:4px;
+    list-style:none;
+    padding:0;
+    margin:2px;
+    width:50px;
+    height:50px;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color:red;
+    text-align:center;
+    background:#OOO;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop( 0, #FFF ), color-stop( 1, #AAA ) );
+    background:-o-linear-gradient(top, #FFF, #AAA);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#FFFFFF');
+    border:1px solid #FFF;
+    position:absolute;
+}
+
+.letters:hover{
+    cursor: pointer;
+}
+
+.numbers {
+    border-radius:4px;
+    list-style:none;
+    padding:0;
+    margin:2px;
+    width:50px;
+    height:50px;
+    font:18px/30px 'Yanone Kaffeesatz', Arial, Serif;
+    font-weight: bolder;
+    color:white;
+    text-align:center;
+    background:#OOO;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop( 0, #FFF ), color-stop( 1, #AAA ) );
+    background:-o-linear-gradient(top, #FFF, #AAA);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#FFFFFF');
+    border:1px solid #FFF;
+    position:absolute;
+}
+
+.buttons  {
+    border-radius:4px;
+    padding:0;
+    margin:2px;
+    width:100px;
+    height:60px;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color: white;
+    text-align:center;
+    background:#222;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop( 0, #FFF ), color-stop( 1, #AAA ) );
+    background:-o-linear-gradient(top, #FFF, #AAA);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#FFFFFF');
+    border:1px solid #FFF;
+    position:absolute;
+}
+
+.buttons2  {
+    border-radius:4px;
+    padding:0;
+    margin:2px;
+    width:180px;
+    height:50px;
+    font:18px/30px 'Yanone Kaffeesatz', star1, Serif;
+    color: white;
+    text-align:center;
+    background:#222;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop( 0, #FFF ), color-stop( 1, #AAA ) );
+    background:-o-linear-gradient(top, #FFF, #AAA);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#FFFFFF');
+    border:1px solid #FFF;
+    position:absolute;
+}

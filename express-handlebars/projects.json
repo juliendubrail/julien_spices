@@ -1,0 +1,14 @@
+{
+    "hangman": {
+        "title": "Hangman",
+        "description":"The classic hangman game with a starwars theme. The canvas element is used to render the hangman drawing.",
+        "image":"/images/star_wars_episode_1_poster.png"
+        },
+
+    "spotifyapi": {
+            "title":"Spotify Search",
+            "description":"Search page using the Spotify search API to conduct searches for artists and albums.",
+            "image":"/images/star_wars_episode_2_poster.png"
+
+        }
+}

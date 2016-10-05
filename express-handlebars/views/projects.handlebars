@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Portfolio App - Projects</title>
+</head>
+{{> head}}
+<body>
+
+
+    <div id="hero-image">
+        <h1 id="hero-title">Welcome to my Portfolio</h1>
+    </div>
+
+
+    <div id="posters-wrapper" class="content-padding clearfix">
+
+
+            {{#each projects}}
+            <div class="poster">
+                <img src={{image}} class="img-responsive"></img>
+
+            <ul>
+                <li><a href="projects/{{this}}">{{{this}}}</a></li>
+            </ul>
+            </div>
+            {{/each}}
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
