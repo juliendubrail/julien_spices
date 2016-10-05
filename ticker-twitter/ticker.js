@@ -1,13 +1,21 @@
 const https = require('https');
 var fs = require('fs');
+
+
+
 //server
 var express = require('express');
 
+
 var app = express();
+
+app.use('/ticker-twitter', express.static('ticker-twitter'));
+
 
 app.listen(3000, function () {
     console.log('Ticker app listening on port 3000!');
 });
+
 
 app.get('/tweets', function(request,response){
 
