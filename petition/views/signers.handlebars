@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Petition App - Home</title>
+</head>
+{{> head}}
+<body>
+
+{{> header}}
+
+<p>See all the People who already signed!</p>
+
+{{#each data}}
+<p> {{data.firstname}}  {{data.lastname}}</p>
+{{/each}}
+
+</div>
+
+</body>
+</html>
