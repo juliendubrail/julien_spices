@@ -1,14 +1,12 @@
 // Home Route
+var db = require('../db.js');
+
 exports.home = function(req, res) {
     res.render('home');
 };
 
 exports.login = function( req,res){
     res.render('login');
-};
-
-exports.signers = function (req,res){
-    res.render('signers');
 };
 
 exports.sign = function(req,res){
@@ -20,5 +18,33 @@ exports.profile = function(req,res){
 };
 
 exports.thanks = function(req,res){
-    res.render('thanks');
+    console.log(req.session);
+    db.getSignature([req.session.user.signature.id], function(err, results){
+        if(err){
+            console.log(err);
+        }else{
+            res.render('thanks', {signature:results});
+        }
+    });
+};
+
+exports.signers = function (req,res){
+    db.getSigners(function(err,results){
+        if(err){
+            console.log("la losse", err);
+        }else{
+            res.render('signers', {persons:results});
+        }
+    });
+};
+
+exports.city = function (req,res){
+    var city = req.params.city;
+    db.getCity(city, function(err,results){
+        if(err){
+            console.log("la loose, err");
+        }else {
+            res.render('city', {persons:results});
+        }
+    });
 };

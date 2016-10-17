@@ -4,10 +4,13 @@ module.exports.insertUsers = insertUsers;
 module.exports.insertProfile = insertProfile;
 module.exports.insertSignature = insertSignature;
 module.exports.displaySignature = displaySignature;
+module.exports.getSignature = getSignature;
 module.exports.hashPassword = hashPassword;
 module.exports.checkPassword = checkPassword;
 module.exports.getEmail = getEmail;
-module.exports.signers = signers;
+module.exports.getSigners = getSigners;
+module.exports.getCity = getCity;
+module.exports.getProfiles = getProfiles;
 
 var pg = require('pg');
 var dbUrl = "pg://postgres:julienspices:spicedacademy@localhost:5432/petition";
@@ -16,7 +19,7 @@ client.connect();
 var bcrypt = require('bcrypt');
 
 
-function queryDatabase(query,params, callback){
+function queryDatabase(query, params, callback){
     client.query(query, params, function(err, results){
         if(err) {
             callback(err);
@@ -53,18 +56,6 @@ function displaySignature (params, callback) {
     });
 }
 
-function signers(callback) {
-    var query = "SELECT firstname, lastname FROM signs";
-    client.query(query, function(err, results){
-        if(err) {
-            callback(err);
-        }
-        else{
-            callback(null, results);
-        }
-    });
-}
-
 function insertUsers(params, callback) {
     var query = "INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING id";
     queryDatabase(query, params, function(err,results){
@@ -78,7 +69,7 @@ function insertUsers(params, callback) {
 }
 
 function insertProfile(params, callback) {
-    var query = "INSERT INTO users_profiles (age, city, url) VALUES ($1, $2, $3) RETURNING id";
+    var query = "INSERT INTO users_profiles (age, city, url, user_id) VALUES ($1, $2, $3, $4) RETURNING id";
     queryDatabase(query, params, function(err,results){
         if(err){
             callback(err);
@@ -90,13 +81,80 @@ function insertProfile(params, callback) {
 }
 
 function insertSignature(params, callback) {
-    var query = "INSERT INTO signs (signature) VALUES ($1) RETURNING id";
+    var query = "INSERT INTO signs (signature, firstname, lastname, userid) VALUES ($1, $2, $3, $4) RETURNING id";
     queryDatabase(query, params, function(err,results){
         if(err){
             callback(err);
         }
         else{
             callback(null, results.rows[0].id);
+        }
+    });
+}
+
+function getSignature(params, callback) {
+    var query = "SELECT signature FROM signs where id=$1";
+    queryDatabase(query, params, function(err,results){
+        if(err){
+            callback(err);
+        }
+        else{
+            callback(null, results.rows[0].signature);
+        }
+    });
+}
+
+function getSigners(callback) {
+    var query = "SELECT users.firstname, users.lastname, users_profiles.age, users_profiles.city, users_profiles.url FROM users JOIN users_profiles ON users.id = users_profiles.user_id";
+    client.query(query, function(err, results){
+        if(err) {
+            callback(err);
+        }
+        else{
+            console.log("Hey there");
+            console.log(results);
+            callback(null, results.rows);
+        }
+    });
+}
+
+function getCity(params, callback) {
+    var query = "SELECT users.firstname, users.lastname, users_profiles.age, users_profiles.city, users_profiles.url FROM users JOIN users_profiles ON users.id = users_profiles.user_id WHERE city=$1";
+    client.query(query, params, function(err, results){
+        if(err) {
+            callback(err);
+        }
+        else{
+            console.log("Hey there");
+            console.log(results);
+            callback(null, results.rows);
+        }
+    });
+}
+
+// function getCities(callback) {
+//     var query = "SELECT users.firstname, users.lastname, users_profiles.age, users_profiles.city FROM users JOIN users_profiles ON users.id = users_profiles.user_id";
+//
+//     client.query(query,function(err, results){
+//         if(err) {
+//             callback(err);
+//         }
+//         else{
+//             console.log("Hey there");
+//             console.log(results);
+//             callback(null, results.rows);
+//         }
+//     });
+// }
+
+function getProfiles(callback) {
+    var query = "SELECT age, city FROM users_profiles";
+    client.query(query, function(err, data){
+        if(err) {
+            callback(err);
+        }
+        else{
+            callback(null, data.rows);
         }
     });
 }

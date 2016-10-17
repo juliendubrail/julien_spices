@@ -3,6 +3,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
+var db = require('./db.js');
 
 //SERVER
 var express = require('express');
@@ -83,8 +84,8 @@ app.post('/', urlencodedParser, function(req, res){
                         console.log("the body" + req.body);
                         req.session.user = {
                             id: number,
-                            first_name: inputs.firstname,
-                            last_name: inputs.lastname,
+                            firstname: inputs.firstname,
+                            lastname: inputs.lastname,
                             email: inputs.email
                         };
                         res.redirect('/profile');
@@ -104,8 +105,7 @@ app.post('/', urlencodedParser, function(req, res){
 app.post('/profile', urlencodedParser, function(req, res){
     const profile = req.body;
     console.log(req.body);
-    var db = require('./db.js');
-    var params = [profile.age, profile.city, profile.url];
+    var params = [profile.age, profile.city, profile.url, req.session.user.id];
     db.insertProfile(params, function(err, results){
         if (err) {
             console.log(err);
@@ -149,14 +149,16 @@ app.post('/login', urlencodedParser, function(req, res){
 app.post('/sign', urlencodedParser, function(req, res){
     const sign = req.body;
     console.log(req.body);
-    var db = require('./db.js');
-    var params = [sign.signature];
+    var params = [sign.signature, req.session.user.firstname, req.session.user.lastname, req.session.user.id ];
     db.insertSignature(params, function(err, results){
         if (err){
             console.log("la loose" + err);
         }
         else {
             console.log(results);
+            req.session.user.signature = {};
+            req.session.user.signature.id = results;
+            console.log(req.session);
             res.redirect('/thanks');
         }
     });
@@ -164,13 +166,11 @@ app.post('/sign', urlencodedParser, function(req, res){
 
 
 //signers
-app.get('/signers', urlencodedParser, function(req,res){
-    var db = require('./db.js');
-    db.signers(function(err, results) {
-        res.render('signers.handlebars', {data:results});
-    });
-
-});
+// app.get('/signers', urlencodedParser, function(req,res){
+//     db.getSigners(function(err, results) {
+//         res.render('signers.handlebars', {results});
+//     });
+// });
 
 
 // Routes
@@ -197,3 +197,5 @@ app.get('/signers', routes.signers);
 app.get('/sign', routes.sign);
 app.get('/profile', routes.profile);
 app.get('/thanks', routes.thanks);
+app.get('/signers', routes.signers);
+app.get('/signers/:city', routes.city);
