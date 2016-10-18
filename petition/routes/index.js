@@ -40,6 +40,7 @@ exports.signers = function (req,res){
 
 exports.city = function (req,res){
     var city = req.params.city;
+    console.log(city);
     db.getCity(city, function(err,results){
         if(err){
             console.log("la loose, err");

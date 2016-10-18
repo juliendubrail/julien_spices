@@ -119,8 +119,8 @@ function getSigners(callback) {
 }
 
 function getCity(params, callback) {
-    var query = "SELECT users.firstname, users.lastname, users_profiles.age, users_profiles.city, users_profiles.url FROM users JOIN users_profiles ON users.id = users_profiles.user_id WHERE city=$1";
-    client.query(query, params, function(err, results){
+    var query = "SELECT users.firstname, users.lastname, users_profiles.age, users_profiles.city, users_profiles.url FROM users JOIN users_profiles ON users.id = users_profiles.user_id WHERE users_profiles.city='" + params + "'";
+    client.query(query, function(err, results){
         if(err) {
             callback(err);
         }
