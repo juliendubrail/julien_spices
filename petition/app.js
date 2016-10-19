@@ -61,8 +61,7 @@ app.listen(3000, function() {
 app.post('/', urlencodedParser, function(req, res){
     const inputs = req.body;
     console.log(req.body);
-    //Database
-    var db = require('./db.js');
+
     db.hashPassword(inputs.password, function(err, hash){
         if(err) {
             console.log(err, "1000");
@@ -164,6 +163,57 @@ app.post('/sign', urlencodedParser, function(req, res){
     });
 });
 
+app.post('/profile/edit', urlencodedParser, function(req, res){
+    const update = req.body;
+    console.log(req.body);
+    var param1 = [update.age, update.city, update.url];
+
+    if (update.password!=""){
+        db.hashPassword(update.password, function(err, hash){
+            if(err) {
+                console.log(err, "1000");
+                res.render('error');
+            }
+            else{
+                console.log(hash);
+                console.log(req.session.user.id);
+                var param = [hash, req.session.user.id];
+                db.updatePassword(param, function(err){
+                    if(err){
+                        console.log("la loo" + err);
+                    }
+                    else{
+                        console.log("test");
+                    }
+                });
+            }
+
+        });
+    }
+    else{
+        console.log(req.session.user.id);
+        var param = [update.firstname, update.lastname, update.email, req.session.user.id];
+        db.updateUser(param, function(err, results){
+            if(err){
+                console.log("la lo" + err);
+            }
+            else{
+                console.log(results);
+                console.log("ca a foire");
+            }
+        });
+    }
+    db.updateProfile(param1, function(err, results){
+        if(err){
+            console.log("la loose" + err);
+        }
+        else{
+            console.log(results);
+            res.redirect('/sign');
+        }
+    });
+
+});
 
 //signers
 // app.get('/signers', urlencodedParser, function(req,res){
@@ -190,6 +240,7 @@ app.post('/sign', urlencodedParser, function(req, res){
 //     }
 // });
 
+// Get Routes
 var routes = require('./routes');
 app.get('/', routes.home);
 app.get('/login', routes.login);
@@ -199,3 +250,4 @@ app.get('/profile', routes.profile);
 app.get('/thanks', routes.thanks);
 app.get('/signers', routes.signers);
 app.get('/signers/:city', routes.city);
+app.get('/profile/edit', routes.update);

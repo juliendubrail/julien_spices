@@ -40,12 +40,25 @@ exports.signers = function (req,res){
 
 exports.city = function (req,res){
     var city = req.params.city;
-    console.log(city);
     db.getCity(city, function(err,results){
         if(err){
             console.log("la loose, err");
         }else {
             res.render('city', {persons:results});
+        }
+    });
+};
+
+exports.update = function(req,res){
+    var user = req.session.user.id;
+    console.log(user);
+    db.displayProfile(user, function(err, results){
+        if(err){
+            console.log("la loose, err");
+        }else{
+            console.log(results);
+            console.log(results.firstname);
+            res.render('profile_update',{user:results});
         }
     });
 };
