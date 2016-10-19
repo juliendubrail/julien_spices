@@ -4,7 +4,6 @@ CREATE TABLE signs (
     firstname VARCHAR(255) not null,
     lastname VARCHAR(255) not null,
     signature TEXT
-    -- userid INT not null
 );
 
 -- DROP TABLE IF EXISTS users;

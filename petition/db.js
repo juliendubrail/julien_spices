@@ -18,7 +18,9 @@ module.exports.updatePassword = updatePassword;
 
 
 var pg = require('pg');
-var dbUrl = "pg://postgres:julienspices:spicedacademy@localhost:5432/petition";
+// var dbUrl = "pg://postgres:julienspices:spicedacademy@localhost:5432/petition";
+var dbUrl = process.env.DATABASE_URL || 'postgres://julienspices:spicedacademy@localhost:5432/petition';
+
 
 dbUrl = require('url').parse(dbUrl);
 
@@ -57,21 +59,20 @@ var bcrypt = require('bcrypt');
 // }
 
 
-function queryDatabase (str, params) {
-    return new Promise(function(resolve, reject) {
-        pool.connect(function(err, client, done) {
+function queryDatabase (str, params, callback) {
+    pool.connect(function(err, client, done) {
+        if (err) {
+            callback(err);
+            return;
+        }
+        client.query(str, params || [], function(err, data) {
             if (err) {
-                reject(err);
-                return;
+                callback(err);
+            } else {
+                console.log("pool resolving");
+                callback(null, data);
             }
-            client.query(str, params || [], function(err, data) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(data);
-                }
-                done();
-            });
+            done();
         });
     });
 }
