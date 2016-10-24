@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Image Upload App - Home</title>
+</head>
+<body>
+<h2>Select a Image file to display</h2>
+    <form id="upload">
+        <div class="form-group">
+            <input type="file" name="displayImage">
+        </div>
+        <button id="localfile" type="submit">Submit</button>
+    </form>
+
+
+<h2>Give an Image file link to display</h2>
+
+<form id="link">
+    <div class="form-group">
+        <input type="url" id="url">
+    </div>
+    <button id="linkfile" type="submit">Submit</button>
+</form>
+
+<img>
+
+{{>scripts}}
+</body>
+
+</html>
