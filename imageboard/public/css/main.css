@@ -1,0 +1,69 @@
+.parent {
+  /*margin-left:50px;*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content:center;
+  align-items: flex-start;
+  justify-content: center;
+  /*height: 800px; */
+}
+
+.child {
+  width: 355px;
+  height: 400px;
+  /*margin: auto;*/
+}
+
+.polaroid{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 60px;
+    border: 5px;
+    border-color: black;
+    /*box-shadow: 0.2em 0.2em 0.7em gray, inset 0 0 0.7em white;*/
+    /*box-shadow: inset 0 0 1em white, 0 0 1em black;*/
+    box-shadow: 0 0 1em black;
+    height:300px;
+    width:300px;
+}
+
+.title{
+    position:absolute;
+    height:50px;
+    width:400px;
+    top:350px;
+    left:225px;
+}
+
+#images{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    align-content:center;
+    align-items: flex-start;
+
+}
+
+.imageContainer{
+    outline: 1px solid #aaa;
+    width: 355px;
+    height: 500px;
+    justify-content: center;
+
+}
+
+#addImage{
+    padding-bottom: 40px;
+position: relative;
+margin-left: 20%;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  cursor: pointer;
+}
