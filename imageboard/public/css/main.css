@@ -1,3 +1,37 @@
+body{
+    background-color: #444;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #fde5b9;
+}
+
+h1 {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    color:white;
+}
+
+h1:hover{
+    color:purple;
+}
+
+label{
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 1.4em;
+    color: white;
+}
+
+textarea {
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	line-height: 1.5;
+	font-size: 1.4em;
+	padding: 5px 10px;
+	color: #fff;
+	display: block;
+	width: 100%;
+	background: transparent;
+}
+
+
 .parent {
   /*margin-left:50px;*/
   display: flex;
@@ -19,12 +53,12 @@
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
-    padding-bottom: 60px;
-    border: 5px;
-    border-color: black;
+    /*padding-bottom: 60px;*/
+    /*border: 5px;*/
+    /*border-color: black;*/
     /*box-shadow: 0.2em 0.2em 0.7em gray, inset 0 0 0.7em white;*/
     /*box-shadow: inset 0 0 1em white, 0 0 1em black;*/
-    box-shadow: 0 0 1em black;
+    /*box-shadow: 0 0 1em black;*/
     height:300px;
     width:300px;
 }
@@ -37,27 +71,27 @@
     left:225px;
 }
 
-#images{
+#images, #content{
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
     align-content:center;
     align-items: flex-start;
-
 }
 
 .imageContainer{
-    outline: 1px solid #aaa;
+    /*border: 5px;*/
+    /*border-color: black;*/
+    /*box-shadow: 0 0 1em black;*/
     width: 355px;
     height: 500px;
     justify-content: center;
-
 }
 
 #addImage{
-    padding-bottom: 40px;
+padding-bottom: 40px;
 position: relative;
-margin-left: 20%;
+/*margin-left: 20%;*/
 }
 
 button {

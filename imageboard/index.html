@@ -7,70 +7,70 @@
 </head>
 <body>
     <div class="parent">
-        <h1>Image Board SPA</h1>
+        <a href='/'><h1>Image Board SPA</h1></a>
     </div>
 
     <div id="images" class="parent">
         <form id="addImage">
-                <label for="image">Image: </label><input id="url" type="url" />
-                <label for="title">Title: </label><input id="title" type="text" />
-                <label for="author">Author: </label><input id="user_name" type="text" />
-                <label for="keywords">Description: </label><input id="description" type="text" />
-                <button id="add">Add</button>
+            <label for="image">Image: </label><input id="url" type="url" />
+            <label for="title">Title: </label><input id="title" type="text" />
+            <label for="author">Author: </label><input id="user_name" type="text" />
+            <label for="keywords">Description: </label><input id="description" type="text" />
+            <button type="submit" id="add">Add</button>
         </form>
+        <div id="content"></div>
     </div>
 
 
-    <script id="imageTemplate" type="text/handlebars">
-    <img class = "polaroid" src="<%= image %>"/>
+    <script id="imageTemplate" type="text/underscore">
+    <a href='#image/<%=id%>'><img class = "polaroid" src="<%= url %>"/></a>
     <ul>
-    <li><%=title %></li>
-    <li><%=user_name %></li>
-    <li><%=description%></li>
+    <li><%= _.escape(title) %></li>
+    <li><%=_.escape(user_name) %></li>
+    <li><%=_.escape(description)%></li>
     </ul>
-    <button class="comment">Add Comment</button>
     </script>
 
 
+    <script id="imageZoom" type="text/underscore">
+    <img class = "polaroid" src="<%= url %>"/>
+    <ul>
+    <li><%= _.escape(title) %></li>
+    <li><%=_.escape(user_name) %></li>
+    <li><%=_.escape(description)%></li>
+    </ul>
+    <textarea id="commentsInput" placeholder="comment here" name="comments"></textarea>
+    <textarea id="user" placeholder="enter your name"></textarea>
 
-    <!-- <script type="text/handlebars" id="images-collection-template">
-    {{#each Image}}
-    <h1>{{title}}</h1>
-    {{/each}}
-    </script> -->
-
-    <!-- <div id="images-collection-container" class="parent"></div>
-
-
-
-
-    <!-- <div id="main-menu">
-              <ul>
-                  <li><a href="#add">Home</a></li>
-                  <li><a href="#search">Search</a></li>
-              </ul>
-          </div> -->
-          <div id="main"></div>
-
-
-    <!-- <div class="parent">
-        <div class="child">
-            <img class="polaroid" src="https://placehold.it/300x300" alt="placeholder image">
+    <div id="comments">
+    <% _.each(comments, function(singlecomment){ %>
+        <div class="single-comment">
+        <%= singlecomment['comment'] %>
         </div>
-    </div> -->
+    <%}); %>
+    </div>
+
+
+    <button type="button" id="addComment">Add Comment</button>
+    <a href="/"><button>Back to home</button></a>
+    </script>
+
 
     <script type="text/javascript" src="/js/handlebars.min.js"></script>
     <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/js/underscore-min.js"></script>
     <script type="text/javascript" src="/js/backbone-min.js"></script>
     <script type="text/javascript" src="/js/Models/singleImageModel.js"></script>
-    <script type="text/javascript" src="/js/Models/allImagesModel.js"></script>
+    <script type="text/javascript" src="/js/Models/galleryModel.js"></script>
     <script type="text/javascript" src="/js/Views/singleImageView.js"></script>
-    <script type="text/javascript" src="/js/Views/allImageView.js"></script>
-    <!-- <script type="text/javascript" src="js/Views/home.js"></script> -->
-    <!-- <script type="text/javascript" src="js/Views/search.js"></script> -->
+    <script type="text/javascript" src="/js/Views/galleryView.js"></script>
+    <script type="text/javascript" src="/js/Views/zoomImageView.js"></script>
+    <script type="text/javascript" src="/js/Models/commentModel.js"></script>
+    <script type="text/javascript" src="/js/Models/commentsModel.js"></script>
+    <!-- <script type="text/javascript" src="/js/Views/commentsView.js"></script> -->
     <script type="text/javascript" src="js/client.js"></script>
-    <!-- <script type="text/javascript" src="js/Router.js"></script> -->
+    <script type="text/javascript" src="js/Router.js"></script>
+
 
 
 </body>

@@ -1,23 +1,32 @@
-ImageApp.Router = Backbone.Router.extend({
+var app = app || {};
+
+app.Router = Backbone.Router.extend({
     routes: {
-        'home': 'home',
-        'search': 'search',
-        '*path': 'home',
-        'image/:id': 'singleImage'
+        'image/:id': 'zoomImage',
+        '/':'home'
+
     },
 
     home: function(){
-        var view = new ImageApp.Views.Home();
-        $('#main').html(view.render().el);
+        // var myGallery = new app.GalleryView( {collection: {} });
+        console.log(myGallery);
+        console.log("anyting");
     },
 
-    search: function(){
-        var view = new ImageApp.Views.Search();
-        $('#main').html(view.render().el);
-    },
-
-    singleImage : function(){
-
-        $('#main').html(view.render().el);
+    zoomImage : function(id){
+        console.log(id);
+        var image =  app.imagelist.get(id);
+        console.log(image);
+        var singleView = new app.ZoomView({model:image});
+        // var comment = app.commentlist.get(id);
+        // console.log(singleView.collection.length);
+        // var comment = singleView.collection.get(7);
+        // console.log(comment);
+        // var comment_view = new app.CommentsView({el: $('#comments'), model: comment});
+        // comment_view.fetch();
     }
+
 });
+
+app.Router.Instance = new app.Router();
+Backbone.history.start();
